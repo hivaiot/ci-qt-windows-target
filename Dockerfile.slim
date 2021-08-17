@@ -1,0 +1,7 @@
+FROM ci-qt-windows-target:v1.0 as main
+
+FROM debian:10
+
+COPY --from=main / /
+
+CMD /bin/bash
