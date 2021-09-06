@@ -45,7 +45,7 @@ WORKDIR /mxe
 
 ENV MXE_TARGETS "x86_64-w64-mingw32.shared"
 
-ENV MXE_PLUGIN_DIRS plugins/gcc9
+ENV MXE_PLUGIN_DIRS plugins/gcc10
 
 RUN make download-gcc
 
@@ -56,6 +56,8 @@ RUN make MXE_TARGETS="$MXE_TARGETS" openssl
 RUN make MXE_TARGETS="$MXE_TARGETS" icu4c
 
 RUN make MXE_TARGETS="$MXE_TARGETS" qt5
+
+RUN make MXE_TARGETS="$MXE_TARGETS" qttools
 
 RUN rm -f /mxe/pkg/*.*
 
@@ -72,6 +74,12 @@ RUN rm -rf /usr/share/man
 FROM debian:10
 
 COPY --from=builder / /
+
+RUN apt update && apt install -y jq
+
+RUN wget https://github.com/QuasarApp/CQtDeployer/releases/download/1.5.4/CQtDeployer_1.5.4.0_Linux64.deb -O cqtdeployer.deb && \
+    dpkg -i cqtdeployer.deb && \
+    rm cqtdeployer.deb
 
 RUN mkdir /src
 
