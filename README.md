@@ -4,7 +4,7 @@
 * [all](https://github.com/hivaiot/ci-qt-windows-target/blob/main/Dockerfile): both dynamic & static link libraries
 
 # What is ci-qt-windows-target?
-Qt applications couldn't build on linux to run on windows machines easily. because the most of continuous integration services that free like [Gitlab](gitlab.com), [framagit](framagit.org) and many others has much more linux runners than windows runners. Then, it should be easier to use linux runners to build windows applications using `Qt` or `C++`. 
+Qt applications couldn't build on linux to run on windows machines easily. because the most of continuous integration services that free like [Gitlab](https://gitlab.com), [framagit](https://framagit.org) and many others has much more linux runners than windows runners. Then, it should be easier to use linux runners to build windows applications using `Qt` or `C++`. 
 
 # About this image 
 This image has tools to build windows applications. Following tools are included in image:
